@@ -14,15 +14,8 @@ __version__ = '1.2.3'  #Versioning: http://www.python.org/dev/peps/pep-0386/
 
 ### Imports ###
 
+
 ### Begin code ###
-
-def test():
-    """ Testing Docstring"""
-    pass
-
-if __name__=='__main__':
-    test()
-
 
 def featCommaSepList():
     """
@@ -36,8 +29,31 @@ def featCommaSepList():
     Returns:
 
     """
+    return None
 
+
+def justForTest( N ):
+    return N
+
+
+### Unit Testing ###
+import unittest
+
+class TestMyMethods(unittest.TestCase):
+
+    def testCommaSepList(self):
+        self.assertEqual(featCommaSepList(), None)
+        self.assertNotEqual(featCommaSepList(), 1)
+
+    def testCommaSepList2(self):
+        self.assertEqual(featCommaSepList(), None)
+        self.assertNotEqual(featCommaSepList(), 1)
+
+    def testJustForTest(self):
+        self.assertEqual(justForTest(5), 5)
+        self.assertNotEqual(justForTest(10), 5)
 
 if __name__ == '__main__':
-    test()
 
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestMyMethods)
+    unittest.TextTestRunner(verbosity=2).run(suite)
